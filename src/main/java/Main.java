@@ -11,8 +11,8 @@ public class Main {
     port(8007);
 
     AuthClient client = new AuthClient(
-		"ea1a2282-4dc3-4def-81d7-cee691731455",
-		"045d4bd0-f727-47d9-a76a-77362a28d8fa",
+		"yourClientId",
+		"yourClientSecret",
 		"http://localhost:8080/callback",
 		true
     );
