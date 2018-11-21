@@ -15,4 +15,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'getting-started-jave-sdk'
+rootProject.name = 'getting-started-java-sdk'

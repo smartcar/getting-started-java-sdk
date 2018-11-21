@@ -1,23 +1,25 @@
 import static spark.Spark.*;
+import com.google.gson.Gson;
 import com.smartcar.sdk.*;
 import com.smartcar.sdk.data.*;
 
 public class Main {
   // global variable to save our accessToken
   private static String access;
+  private static Gson gson = new Gson();
 
   public static void main(String[] args) {
 
-    port(8007);
+    port(8000);
 
     AuthClient client = new AuthClient(
-		"yourClientId",
-		"yourClientSecret",
-		"http://localhost:8080/callback",
-		true
+      "yourClientId",
+      "yourClientSecret",
+      "http://localhost:8000/callback",
+      true
     );
 
-    get("/login", (req, res) -> {
+    get("/", (req, res) -> {
       String link = client.getAuthUrl();
       res.redirect(link);
       return null;
@@ -30,8 +32,7 @@ public class Main {
       // in a production app you'll want to store this in some kind of persistent storage
       access = auth.getAccessToken();
 
-      res.redirect("/vehicle");
-      return null;
+      return "";
     });
 
     get("/vehicle", (req, res) -> {
@@ -43,6 +44,8 @@ public class Main {
 
       VehicleInfo info = vehicle.info();
 
+      System.out.println(gson.toJson(info));
+
       // {
       //   "id": "36ab27d0-fd9d-4455-823a-ce30af709ffc",
       //   "make": "TESLA",
@@ -50,9 +53,9 @@ public class Main {
       //   "year": 2014
       // }
 
-      System.out.println(info.toString());
+      res.type("application/json");
 
-      return info.toString();
+      return gson.toJson(info);
     });
   }
 }
