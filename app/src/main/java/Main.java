@@ -34,6 +34,7 @@ public class Main {
 
     get("/exchange", (req, res) -> {
       String code = req.queryMap("code").value();
+
       Auth auth = client.exchangeCode(code);
 
       // in a production app you'll want to store this in some kind of persistent storage
@@ -44,6 +45,7 @@ public class Main {
 
     get("/vehicle", (req, res) -> {
       SmartcarResponse<VehicleIds> vehicleIdResponse = AuthClient.getVehicleIds(access);
+      // the list of vehicle ids
       String[] vehicleIds = vehicleIdResponse.getData().getVehicleIds();
 
       // instantiate the first vehicle in the vehicle id list
