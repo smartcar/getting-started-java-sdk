@@ -14,7 +14,7 @@ public class Main {
 
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    String redirectUri = System.getenv("REDIRECT_URI");
+    String redirectUri = "http://localhost:8000/exchange";
     String[] scope = {"read_vehicle_info"};
     boolean testMode = true;
 
