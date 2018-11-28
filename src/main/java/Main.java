@@ -12,11 +12,18 @@ public class Main {
 
     port(8000);
 
+    String clientId = System.getenv("CLIENT_ID");
+    String clientSecret = System.getenv("CLIENT_SECRET");
+    String redirectUri = System.getenv("REDIRECT_URI");
+    String[] scope = {"read_vehicle_info"};
+    boolean testMode = true;
+
     AuthClient client = new AuthClient(
-      "yourClientId",
-      "yourClientSecret",
-      "http://localhost:8000/exchange",
-      true
+      clientId,
+      clientSecret,
+      redirectUri,
+      scope,
+      testMode
     );
 
     get("/login", (req, res) -> {
