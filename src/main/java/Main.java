@@ -15,7 +15,7 @@ public class Main {
     AuthClient client = new AuthClient(
       "yourClientId",
       "yourClientSecret",
-      "http://localhost:8000/callback",
+      "http://localhost:8000/exchange",
       true
     );
 
@@ -25,7 +25,7 @@ public class Main {
       return null;
     });
 
-    get("/callback", (req, res) -> {
+    get("/exchange", (req, res) -> {
       String code = req.queryMap("code").value();
       Auth auth = client.exchangeCode(code);
 
