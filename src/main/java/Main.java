@@ -19,7 +19,7 @@ public class Main {
       true
     );
 
-    get("/", (req, res) -> {
+    get("/login", (req, res) -> {
       String link = client.getAuthUrl();
       res.redirect(link);
       return null;
