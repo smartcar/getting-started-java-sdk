@@ -42,9 +42,9 @@ public class Main {
       // instantiate the first vehicle in the vehicle id list
       Vehicle vehicle = new Vehicle(vehicleIds[0], access);
 
-      VehicleInfo info = vehicle.info();
+      VehicleAttributes attributes = vehicle.attributes();
 
-      System.out.println(gson.toJson(info));
+      System.out.println(gson.toJson(attributes));
 
       // {
       //   "id": "36ab27d0-fd9d-4455-823a-ce30af709ffc",
