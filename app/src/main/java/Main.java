@@ -12,22 +12,13 @@ public class Main {
 
     port(8000);
 
-    String clientId = System.getenv("CLIENT_ID");
-    String clientSecret = System.getenv("CLIENT_SECRET");
-    String redirectUri = "http://localhost:8000/exchange";
     String[] scope = {"required:read_vehicle_info"};
     boolean testMode = true;
 
-    AuthClient client = new AuthClient(
-      clientId,
-      clientSecret,
-      redirectUri,
-      scope,
-      testMode
-    );
+    AuthClient client = new AuthClient.Builder().testMode(testMode).build();
 
     get("/login", (req, res) -> {
-      String link = client.getAuthUrl();
+      String link = client.getAuthUrl(scope);
       res.redirect(link);
       return null;
     });
@@ -44,9 +35,9 @@ public class Main {
     });
 
     get("/vehicle", (req, res) -> {
-      SmartcarResponse<VehicleIds> vehicleIdResponse = AuthClient.getVehicleIds(access);
+      VehicleIds vehiclesResponse = Smartcar.getVehicles(access);
       // the list of vehicle ids
-      String[] vehicleIds = vehicleIdResponse.getData().getVehicleIds();
+      String[] vehicleIds = vehicleIdResponse.getVehicleIds();
 
       // instantiate the first vehicle in the vehicle id list
       Vehicle vehicle = new Vehicle(vehicleIds[0], access);

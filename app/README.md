@@ -9,12 +9,12 @@ Before we get started, create an application on Smartcar's Developer Dashboard t
 
 Then, we can set the clientId and clientSecret within `Main.java` -
 ```java
-AuthClient client = new AuthClient(
-  "yourClientId",
-  "yourClientSecret",
-  "http://localhost:8000/callback",
-  true
-);
+AuthClient client = new AuthClient.Builder()
+                      .clientId("yourClientId")
+                      .clientSecret("yourClientSecret")
+                      .redirectUri("http://localhost:8000/callback")
+                      .testMode(true)
+                      .build();
 ```
 
 To install the required dependencies and run this Java app -
