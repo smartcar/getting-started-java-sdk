@@ -9,9 +9,9 @@ Before we get started, create an application on Smartcar's Developer Dashboard t
 
 Then, we can set these as environment variables or directly set them in the application -
 ```bash
-$ export CLIENT_ID=<your-client-id>
-$ export CLIENT_SECRET=<your-client-secret>
-$ export REDIRECT_URI=<your-redirect-uri>
+$ export SMARTCAR_CLIENT_ID=<your-client-id>
+$ export SMARTCAR_CLIENT_SECRET=<your-client-secret>
+$ export SMARTCAR_REDIRECT_URI=<your-redirect-uri>
 ```
 
 Make sure you have cloned this repo -
