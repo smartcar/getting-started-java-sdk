@@ -8,17 +8,22 @@ public class Main {
   private static String access;
   private static Gson gson = new Gson();
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     port(8000);
 
-    String[] scope = {"required:read_vehicle_info"};
+    String[] scope = {"required:read_vehicle_info", "required:read_odometer"};
     boolean testMode = true;
 
-    AuthClient client = new AuthClient.Builder().testMode(testMode).build();
+    AuthClient client = new AuthClient.Builder()
+      .clientId("<clientId>")
+      .clientSecret("<clientSecret>")
+      .redirectUri("<redirectUri")
+      .testMode(testMode)
+      .build();
 
     get("/login", (req, res) -> {
-      String link = client.getAuthUrl(scope);
+      String link = client.authUrlBuilder(scope).build();
       res.redirect(link);
       return null;
     });
@@ -30,20 +35,19 @@ public class Main {
 
       // in a production app you'll want to store this in some kind of persistent storage
       access = auth.getAccessToken();
-
+      
       return "";
     });
 
     get("/vehicle", (req, res) -> {
       VehicleIds vehiclesResponse = Smartcar.getVehicles(access);
       // the list of vehicle ids
-      String[] vehicleIds = vehicleIdResponse.getVehicleIds();
+      String[] vehicleIds = vehiclesResponse.getVehicleIds();
 
       // instantiate the first vehicle in the vehicle id list
       Vehicle vehicle = new Vehicle(vehicleIds[0], access);
-
+  
       VehicleAttributes attributes = vehicle.attributes();
-
       System.out.println(gson.toJson(attributes));
 
       // {
@@ -54,8 +58,7 @@ public class Main {
       // }
 
       res.type("application/json");
-
-      return gson.toJson(info);
+      return gson.toJson(attributes);
     });
   }
 }
