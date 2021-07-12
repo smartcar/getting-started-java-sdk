@@ -7,10 +7,11 @@ Before we get started, create an application on Smartcar's Developer Dashboard t
 
 **Note:** On the dashboard, you will want to set your `redirect_uri` as `http://localhost:8000/exchange`.
 
-Then, we can set these as environment variables -
+Then, we can set these as environment variables or directly set them in the application -
 ```bash
-$ export CLIENT_ID=<your-client-id>
-$ export CLIENT_SECRET=<your-client-secret>
+$ export SMARTCAR_CLIENT_ID=<your-client-id>
+$ export SMARTCAR_CLIENT_SECRET=<your-client-secret>
+$ export SMARTCAR_REDIRECT_URI=<your-redirect-uri>
 ```
 
 Make sure you have cloned this repo -
@@ -30,4 +31,3 @@ Once your server is up and running, you can authenticate your vehicle. In our cu
 Read our [API Docs](https://smartcar.com/docs/api) to learn what else you can do with Smartcar's API.
 
 Learn more about the [Java SDK](https://github.com/smartcar/java-sdk) and how it can be used.
-
