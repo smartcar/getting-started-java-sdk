@@ -16,8 +16,8 @@ public class Main {
     boolean testMode = true;
 
     AuthClient client = new AuthClient.Builder()
-      .clientId("2cfa25d8-f912-4b1f-905a-4562336f2940")
-      .clientSecret("fc78622f-9b71-4acf-9713-cc6e70945e7f")
+      .clientId("<clientId>")
+      .clientSecret("<clientSecret>")
       .redirectUri("http://localhost:8000/exchange")
       .testMode(testMode)
       .build();
