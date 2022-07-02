@@ -35,7 +35,7 @@ public class Main {
 
       // in a production app you'll want to store this in some kind of persistent storage
       access = auth.getAccessToken();
-      
+
       return "";
     });
 
@@ -46,7 +46,7 @@ public class Main {
 
       // instantiate the first vehicle in the vehicle id list
       Vehicle vehicle = new Vehicle(vehicleIds[0], access);
-  
+
       VehicleAttributes attributes = vehicle.attributes();
       System.out.println(gson.toJson(attributes));
 
