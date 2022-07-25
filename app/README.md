@@ -7,13 +7,19 @@ Before we get started, create an application on Smartcar's Developer Dashboard t
 
 **Note:** On the dashboard, you will want to set your `redirect_uri` as `http://localhost:8000/callback`.
 
-Then, we can set the clientId and clientSecret within `Main.java` -
+Then, we can set the clientId and clientSecret as enviromental variables -
+```bash
+$ export SMARTCAR_CLIENT_ID=<your-client-id>
+$ export SMARTCAR_CLIENT_SECRET=<your-client-secret>
+```
+
+Or we can set the clientId and clientSecret within `Main.java` -
 ```java
 AuthClient client = new AuthClient.Builder()
                       .clientId("yourClientId")
                       .clientSecret("yourClientSecret")
                       .redirectUri("http://localhost:8000/callback")
-                      .testMode(true)
+                      .mode('test')
                       .build();
 ```
 

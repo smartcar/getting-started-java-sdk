@@ -13,13 +13,11 @@ public class Main {
     port(8000);
 
     String[] scope = {"required:read_vehicle_info", "required:read_odometer"};
-    boolean testMode = true;
+    String mode = "test";
 
     AuthClient client = new AuthClient.Builder()
-      .clientId("<clientId>")
-      .clientSecret("<clientSecret>")
       .redirectUri("http://localhost:8000/exchange")
-      .testMode(testMode)
+      .mode(mode)
       .build();
 
     get("/login", (req, res) -> {
@@ -35,8 +33,9 @@ public class Main {
 
       // in a production app you'll want to store this in some kind of persistent storage
       access = auth.getAccessToken();
-      
-      return "";
+
+      res.redirect("/vehicle");
+      return null;
     });
 
     get("/vehicle", (req, res) -> {
@@ -46,7 +45,7 @@ public class Main {
 
       // instantiate the first vehicle in the vehicle id list
       Vehicle vehicle = new Vehicle(vehicleIds[0], access);
-  
+
       VehicleAttributes attributes = vehicle.attributes();
       System.out.println(gson.toJson(attributes));
 
