@@ -19,7 +19,7 @@ AuthClient client = new AuthClient.Builder()
                       .clientId("yourClientId")
                       .clientSecret("yourClientSecret")
                       .redirectUri("http://localhost:8000/callback")
-                      .mode('test')
+                      .mode("test")
                       .build();
 ```
 
