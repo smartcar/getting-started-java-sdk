@@ -13,7 +13,7 @@ public class Main {
     port(8000);
 
     String[] scope = {"required:read_vehicle_info", "required:read_odometer"};
-    String mode = "test";
+    String mode = "simulated";
 
     AuthClient client = new AuthClient.Builder()
       .redirectUri("http://localhost:8000/exchange")
