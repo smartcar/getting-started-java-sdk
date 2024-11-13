@@ -28,7 +28,7 @@ To install the required dependencies and run this Java app -
 $ gradle run
 ```
 
-Once your server is up and running, you can authenticate your vehicle. In our current set up, we are in Smartcar's [simulated mode](https://smartcar.com/docs/getting-started/dashboard/simulator), so you can log in with any username and password. To authenticate, navigate to `http://localhost:8000`. Once you have authenticated, go to `http://localhost:8000/vehicle` to see your vehicle information.
+Once your server is up and running, you can authenticate your vehicle. In our current set up, we are in Smartcar's [simulated mode](https://smartcar.com/docs/getting-started/dashboard/simulator), so you can log in with simulated credentials found in your Smartcar Dashboard or with any username and password. To authenticate, navigate to `http://localhost:8000`. Once you have authenticated, go to `http://localhost:8000/vehicle` to see your vehicle information.
 
 ## Next Steps
 Read our [API Docs](https://smartcar.com/docs/api) to learn what else you can do with Smartcar's API.
